@@ -32,7 +32,22 @@
 	}
 
 	async function load() {
-		relays.set(Object.keys(await window.nostr.getRelays()));
+		let userRelays = Object.keys(await window.nostr.getRelays());
+		if (userRelays.length == 0)
+			userRelays = [
+				'wss://purplepag.es',
+				'wss://njump.me',
+				'wss://relay.bitcoinpark.com',
+				'wss://nostr.atlbitlab.com',
+				'wss://fiatjaf.nostr1.com',
+				'wss://nostr.mutinywallet.com',
+				'wss://relay.primal.net',
+				'wss://relay.nostr.band',
+				'wss://relay.noswhere.com',
+				'wss://relay.damus.io',
+				'wss://relay.getalby.com/v1'
+			];
+		relays.set(userRelays);
 		pubkey.set(await window.nostr.getPublicKey());
 		profile.set(await getProfile(get(pubkey)));
 	}
