@@ -45,7 +45,7 @@
 		{#if key != 'pubkey' && key != 'npub' && key != 'picture' && key != 'created_at'}
 			<div class="card">
 				<p>{key}</p>
-				<input type="text" bind:value />
+				<input type="text" bind:value={$profile[key]} />
 			</div>
 		{/if}
 	{/each}
