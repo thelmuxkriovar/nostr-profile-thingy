@@ -9,7 +9,10 @@
 
 	async function save() {
 		for (let el in $profile) {
-			if ($profile[el] == '') delete $profile[el];
+			if ($profile[el] == '') {
+				delete $profile[el];
+				$profile = $profile;
+			}
 		}
 		const event = await window.nostr.signEvent({
 			kind: 0,
