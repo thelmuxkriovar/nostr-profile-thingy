@@ -8,6 +8,9 @@
 	let changingPicture = false;
 
 	async function save() {
+		for (let el in $profile) {
+			if ($profile[el] == '') delete $profile[el];
+		}
 		const event = await window.nostr.signEvent({
 			kind: 0,
 			content: JSON.stringify($profile),
